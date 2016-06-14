@@ -1,0 +1,18 @@
+@media(max-width:1200px) {
+
+    div.text_div {
+        margin-bottom: 15px;
+    }
+
+}
+
+
+.required:after{
+    content:'*';
+    color: #ff2121;
+    padding-left:5px;
+}
+
+hr{
+    border-color: #6f6f6f;
+}
