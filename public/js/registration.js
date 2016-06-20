@@ -1,6 +1,7 @@
 // the maximum number of courses that can be
 // in any of the courses sections
 var MAX_COURSE_LIMIT = 30;
+var MAX_TABLE_LIMIT = 5;
 
 // submit the form
 function submitApplication() {
@@ -91,15 +92,12 @@ function enablingPermanentAddressBlock() {
     }
 }
 
-
-
-
 //
-function toggleEnablingMTBIAttendedDate(){
-    if ( $('#has_taken_mtbi').val().toLowerCase() == 'y' ) {
-        $('#mtbi_attended_year').removeAttr('disabled').focus();
+function enablingMTBIAttendedDate(){
+    if ( $('#prevMTBIPart').val().toLowerCase() == 'y' ) {
+        $('#dateMTBIPart').show();
     } else {
-        $('#mtbi_attended_year').val('').attr('disabled', 'disabled');
+        $('#dateMTBIPart').hide();
     }
 }
 
@@ -111,12 +109,6 @@ function toggleEnablingAlienResidentNo() {
     } else {
         $('#alien_resident_detail').hide();
     }
-
-    // if ( $('#is_permanent_resident').val().toLowerCase() == 'y' ) {
-    //     $('#alien_resident_no').removeAttr('disabled').focus();
-    // } else {
-    //     $('#alien_resident_no').val('').attr('disabled', 'disabled');
-    // }
 }
 
 var fieldLabels = {
@@ -366,8 +358,9 @@ function validatePhoneFields(fieldsMissingData, errorMessages) {
 // will not add a new course if the number of courses
 // is already MAX_COURSE_LIMIT
 function addNewCourse(subject) {
-    var courseTable = document.getElementById(subject + 'coursetable');
-    var newCourseIndex = courseTable.rows.length;
+    var courseTable = document.getElementById(subject + 'CourseTable');
+    var courseTableBody = document.getElementById(subject + 'CourseTableBody');
+    var newCourseIndex = courseTable.rows.length + 1;
 
     if ( newCourseIndex > MAX_COURSE_LIMIT ) {
         alert("You have reached the maximum limit for the number of courses");
@@ -376,16 +369,61 @@ function addNewCourse(subject) {
 
     var newRow = document.createElement('tr');
     var newCell = document.createElement('td');
-    newCell.innerHTML = "<input name='" + subject + "course" + newCourseIndex + "' type='text' size='10'>";
+    newCell.innerHTML = "<input class='form-control' name='" + subject + "course" +
+        newCourseIndex + "' type='text' size='12' placeholder='Course #' required>";
     newRow.appendChild(newCell);
     var newCell = document.createElement('td');
-    newCell.innerHTML = "<input name='" + subject + "title" + newCourseIndex + "' type='text' size='30'>";
+    newCell.innerHTML = "<input class='form-control' name='" + subject + "title" +
+        newCourseIndex + "' type='text' size='28' placeholder='Course Title' required>";
     newRow.appendChild(newCell);
     var newCell = document.createElement('td');
-    newCell.innerHTML = "<input name='" + subject + "gradeinst" + newCourseIndex + "' type='text' size='20'>";
+    newCell.innerHTML = "<input class='form-control' name='" + subject + "gradeinst" +
+        newCourseIndex + "' type='text' size='10' placeholder='Grades' required>";
     newRow.appendChild(newCell);
 
-    courseTable.appendChild(newRow);
+    courseTableBody.appendChild(newRow);
+}
+
+function deleteCourse(subject) {
+    var courseTable = document.getElementById(subject + 'CourseTable');
+    var newCourseIndex = courseTable.rows.length;
+
+    if ( newCourseIndex == 0 ) {
+        alert("You have not added any course yet !! Invalid operation..");
+        return;
+    }
+
+    courseTable.deleteRow(newCourseIndex - 1);
+}
+
+function addRowTable(tablename) {
+    var tempTable = document.getElementById(tablename + 'Table');
+    var tempTableBody = document.getElementById(tablename + 'TableBody');
+    var newRowIndex = tempTable.rows.length + 1;
+
+    if ( newRowIndex > MAX_TABLE_LIMIT ) {
+        alert("You have reached the maximum limit for the number of " + tablename);
+        return;
+    }
+
+    var newRow = document.createElement('tr');
+    var newCell = document.createElement('td');
+    newCell.innerHTML = '<input type="text" class="form-control" ' +
+        'id="' + tablename + newRowIndex + '" placeholder="' + tablename + ' ' + newRowIndex + '" required>';
+    newRow.appendChild(newCell);
+    tempTableBody.appendChild(newRow);
+}
+
+function removeRowTable(tablename) {
+    var tempTable = document.getElementById(tablename + 'Table');
+    var tableIndex = tempTable.rows.length;
+
+    if ( tableIndex == 0 ) {
+        alert("You have not entered any " + tablename + " yet !! Invalid operation.. ");
+        return;
+    }
+
+    tempTable.deleteRow(tableIndex - 1);
 }
 
 // checks whether in the all course rows either all the 3 fields

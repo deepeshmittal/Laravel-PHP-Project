@@ -16,6 +16,10 @@ class StudentRegistration extends Controller
     }
     public function register2()
     {
-        return view('registrationform_edu');
+        return view('registrationform2');
+    }
+    public function register3()
+    {
+        return view('registrationform3');
     }
 }

@@ -15,3 +15,5 @@
 Route::get('register', 'StudentRegistration@register');
 
 Route::get('register2', 'StudentRegistration@register2');
+
+Route::get('register3', 'StudentRegistration@register3');

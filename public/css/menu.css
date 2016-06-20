@@ -16,3 +16,63 @@
 hr{
     border-color: #6f6f6f;
 }
+
+select, select.form-control{
+    width: 100%;
+    font-size: 12px;
+}
+
+div#field-group{
+    background-color: #f2f2f2;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    border: none;
+    padding: 0px 0px 8px 0px;
+}
+
+.table{
+    margin: 0px;
+
+}
+
+textarea, textarea.form-control, input.form-control, input[type=text], input[type=password], input[type=email],
+input[type=number], [type=text].form-control, [type=password].form-control, [type=email].form-control,
+[type=tel].form-control, [contenteditable].form-control{
+    font-size: 12px;
+}
+
+table#mathCourseTable{
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+table#mathCourseTable td{
+    padding: 0px 0px 0px 0px;
+}
+
+table#scienceCourseTable{
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+table#scienceCourseTable td{
+    padding: 0px 0px 0px 0px;
+}
+
+table#currmathscienceCourseTable{
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+table#currmathscienceCourseTable td{
+    padding: 0px 0px 0px 0px;
+}
+
+.cust-textArea{
+    width: 50%;
+    height: 1000px;
+    max-width: 100%
+}

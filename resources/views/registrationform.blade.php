@@ -67,11 +67,6 @@
 
         <div class="form-group">
 
-            <label for="ssnDetails" class="col-lg-2 control-label">Social Security Number</label>
-            <div class="col-lg-2 text_div">
-                <input type="text" class="form-control" id="ssnDetails" placeholder="Social Security">
-            </div>
-
             <label for="is_us_citizen" class="col-lg-2 control-label required">Are you a US Citizen?</label>
             <div class="col-lg-2">
                 <select class="form-control" id="is_us_citizen" name="is_us_citizen" required
@@ -105,7 +100,7 @@
             </span>
         </div>
 
-        <div class="form-group" style="background-color: #e6e6e6; margin-left: 1px;margin-right: 1px;">
+        <div class="form-group" id="field-group">
             <p style="padding-left: .5em; padding-top: .5em;"><b>Place of Birth</b></p>
             <label for="birthCity" class="col-lg-2 control-label">City</label>
             <div class="col-lg-2" style="margin-bottom: 5px;">
@@ -121,7 +116,7 @@
             </div>
         </div>
 
-        <div class="form-group" style="background-color: #e6e6e6; margin-left: 1px;margin-right: 1px;">
+        <div class="form-group" id="field-group">
             <p style="padding-left: .5em; padding-top: .5em;"><b>Current Address / Contact Details</b></p>
             <p style="padding-left: .5em;font-style: oblique; font-size: .8em;">Please note, you will receive mail
                 to this address until at least late May. If you are moving, please indicate a permanent address
@@ -173,12 +168,12 @@
             </div>
         </div>
 
-        <div class="form-group" style="background-color: #e6e6e6; margin-left: 1px;margin-right: 1px;">
+        <div class="form-group" id="field-group">
             <p style="padding-left: .5em; padding-top: .5em;"><b>Permanent Address</b></p>
             <p style="padding-left: .5em;font-style: oblique; font-size: .8em; float: left; margin-top: 3px">
                 Your permanent address is same as your current address mentioned above ?
             </p>
-            <div class="col-lg-2 text_div">
+            <div class="col-lg-1 text_div">
                 <select name="addressSameAsAbove" id="addressSameAsAbove"
                         onchange="javascript:enablingPermanentAddressBlock()" required>
                     <option value="">Select</option>
@@ -188,42 +183,43 @@
             </div>
             <span id="permanentAddressBlock" style="display: none">
                 <div class="col-lg-12" style="padding: 0 0 0 0;">
-                <label for="permanentStreet" class="col-lg-2 control-label required">Street</label>
-                <div class="col-lg-6" style="margin-bottom: 5px;">
-                    <input type="text" class="form-control" id="permanentStreet" placeholder="Street" required>
+                    <label for="permanentStreet" class="col-lg-2 control-label required">Street</label>
+                    <div class="col-lg-6" style="margin-bottom: 5px;">
+                        <input type="text" class="form-control" id="permanentStreet" placeholder="Street" required>
+                    </div>
+                    <div class="col-lg-12" style="padding: 0 0 0 0;">
+                        <label for="permanentCity" class="col-lg-2 control-label required" >City</label>
+                        <div class="col-lg-2" style="margin-bottom: 5px;">
+                            <input type="text" class="form-control" id="permanentCity" placeholder="City" required>
+                        </div>
+                        <label for="permanentState" class="col-lg-2 control-label required">State</label>
+                        <div class="col-lg-2" style="margin-bottom: 5px;">
+                            <input type="text" class="form-control" id="permanentState" placeholder="State" required>
+                        </div>
+                        <label for="permanentCountry" class="col-lg-2 control-label required">Country</label>
+                        <div class="col-lg-2" style="margin-bottom: 5px;">
+                            <input type="text" class="form-control" id="permanentCountry" placeholder="Country" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="padding: 0 0 0 0;">
+                        <label for="permanentZip" class="col-lg-2 control-label required" >ZIP/Postal Code</label>
+                        <div class="col-lg-2" style="margin-bottom: 5px;">
+                            <input type="text" class="form-control" id="permanentZip" placeholder="ZIP/Postal Code" required>
+                        </div>
+                        <label for="permanentHomePhone" class="col-lg-2 control-label required" >Home Phone No</label>
+                        <div class="col-lg-2" style="margin-bottom: 20px;">
+                            <input type="text" class="form-control" id="permanentHomePhone"
+                                   placeholder="Home Phone" required>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-12" style="padding: 0 0 0 0;">
-                    <label for="permanentCity" class="col-lg-2 control-label required" >City</label>
-                    <div class="col-lg-2" style="margin-bottom: 5px;">
-                        <input type="text" class="form-control" id="permanentCity" placeholder="City" required>
-                    </div>
-                    <label for="permanentState" class="col-lg-2 control-label required">State</label>
-                    <div class="col-lg-2" style="margin-bottom: 5px;">
-                        <input type="text" class="form-control" id="permanentState" placeholder="State" required>
-                    </div>
-                    <label for="permanentCountry" class="col-lg-2 control-label required">Country</label>
-                    <div class="col-lg-2" style="margin-bottom: 5px;">
-                        <input type="text" class="form-control" id="permanentCountry" placeholder="Country" required>
-                    </div>
-                </div>
-                <div class="col-lg-12" style="padding: 0 0 0 0;">
-                    <label for="permanentZip" class="col-lg-2 control-label required" >ZIP/Postal Code</label>
-                    <div class="col-lg-2" style="margin-bottom: 5px;">
-                        <input type="text" class="form-control" id="permanentZip" placeholder="ZIP/Postal Code" required>
-                    </div>
-                    <label for="permanentHomePhone" class="col-lg-2 control-label required" >Home Phone No</label>
-                    <div class="col-lg-2" style="margin-bottom: 20px;">
-                        <input type="text" class="form-control" id="permanentHomePhone"
-                               placeholder="Home Phone" required>
-                    </div>
-                </div>
-            </div>
             </span>
         </div>
+
         <div class="form-group">
             <div class="col-lg-10">
-                <button type="reset" class="btn btn-default" style="margin-right: 1em;">Reset</button>
-                <button type="submit" class="btn btn-primary">Next</button>
+                <button type="reset" class="btn btn-default btn-sm" style="margin-right: 1em;">Reset</button>
+                <button type="submit" class="btn btn-primary btn-sm">Save & Continue</button>
             </div>
         </div>
     </fieldset>
