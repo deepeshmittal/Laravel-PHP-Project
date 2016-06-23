@@ -6,6 +6,18 @@
 
 }
 
+@media(min-width: 768px){
+    input[type=file]{
+        width:50%;
+    }
+}
+
+@media(max-width: 768px) {
+    div#main_div{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
 
 .required:after{
     content:'*';
@@ -75,4 +87,9 @@ table#currmathscienceCourseTable td{
     width: 50%;
     height: 1000px;
     max-width: 100%
+}
+
+p#box-heading{
+    padding-left: 15px;
+    padding-top: 7px;
 }

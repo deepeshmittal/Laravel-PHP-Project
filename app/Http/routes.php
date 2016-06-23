@@ -12,8 +12,14 @@
 */
 
 
-Route::get('register', 'StudentRegistration@register');
+Route::get('register', 'StudentRegistration@registerPageOne');
 
-Route::get('register2', 'StudentRegistration@register2');
+Route::post('submit/1', 'StudentRegistration@submitPageOne');
 
-Route::get('register3', 'StudentRegistration@register3');
+Route::get('register/2', 'StudentRegistration@registerPageTwo');
+
+Route::post('submit/2', 'StudentRegistration@submitPageTwo');
+
+Route::get('register/3', 'StudentRegistration@registerPageThree');
+
+Route::post('submit/3', 'StudentRegistration@submitPageThree');

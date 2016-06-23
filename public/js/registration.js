@@ -55,9 +55,10 @@ function toggleSubmit() {
 function onChangeIsUSCitizen() {
     if ( $('#is_us_citizen').val().toLowerCase() == 'n' ) {
         $('#permanent_resident_question').show();
+        $('#is_permanent_resident').val('').attr('disabled', false);
     } else {
         $('#permanent_resident_question').hide();
-        $('#is_permanent_resident').val('');
+        $('#is_permanent_resident').val('').attr('disabled', 'disabled');
         $('#alien_resident_no').val('').attr('disabled', 'disabled');
     }
 }
@@ -67,8 +68,10 @@ function onChangeIsUSCitizen() {
 function toggleEnablingOtherEthnicity() {
     if ( $('#ethnicity').val().toLowerCase() == 'other' ) {
         $('#other_ethnicity_detail').show();
+        $('#other-ethnicity').val('').attr('disabled', false);
     } else {
         $('#other_ethnicity_detail').hide();
+        $('#other-ethnicity').val('').attr('disabled', 'disabled');
     }
 }
 
@@ -87,8 +90,20 @@ function toggleEnablingGREAttendedDate() {
 function enablingPermanentAddressBlock() {
     if ( $('#addressSameAsAbove').val().toLowerCase() == 'n' ) {
         $('#permanentAddressBlock').show();
+        $('#permanentStreet').val('').attr('disabled', false);
+        $('#permanentCity').val('').attr('disabled', false);
+        $('#permanentState').val('').attr('disabled', false);
+        $('#permanentCountry').val('').attr('disabled', false);
+        $('#permanentZip').val('').attr('disabled', false);
+        $('#permanentHomePhone').val('').attr('disabled', false);
     } else {
         $('#permanentAddressBlock').hide();
+        $('#permanentStreet').val('').attr('disabled', 'disabled');
+        $('#permanentCity').val('').attr('disabled', 'disabled');
+        $('#permanentState').val('').attr('disabled', 'disabled');
+        $('#permanentCountry').val('').attr('disabled', 'disabled');
+        $('#permanentZip').val('').attr('disabled', 'disabled');
+        $('#permanentHomePhone').val('').attr('disabled', 'disabled');
     }
 }
 
@@ -106,8 +121,10 @@ function enablingMTBIAttendedDate(){
 function toggleEnablingAlienResidentNo() {
     if ( $('#is_permanent_resident').val().toLowerCase() == 'y' ) {
         $('#alien_resident_detail').show();
+        $('#alien_resident_no').val('').attr('disabled', false);
     } else {
         $('#alien_resident_detail').hide();
+        $('#alien_resident_no').val('').attr('disabled', 'disabled');
     }
 }
 

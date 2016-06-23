@@ -2,7 +2,7 @@
 
 @section('content')
     <h4 style="margin-bottom: 1em;margin-top:1.5em;text-decoration: underline;">Education Details</h4>
-    <form class="form-horizontal">
+    {!! Form::open(array('class'=>'form-horizontal')) !!}
         <fieldset>
             <div class="form-group">
                 <label style="padding-top: 0" for="currentCollege" class="col-lg-4 control-label required">
@@ -60,7 +60,7 @@
             </div>
 
             <div class="form-group" id="field-group">
-                <p style="padding-left: .5em; padding-top: .5em;"><b>List all other colleges or
+                <p id="box-heading"><b>List all other colleges or
                         universities you have attended, if any</b><br>
                     <span style="font-size: 11px;font-style: italic">(maximum upto 5 colleges) </span></p>
                 <div class="col-lg-6">
@@ -80,7 +80,7 @@
             </div>
 
             <div class="form-group" id="field-group">
-                <p style="padding-left: .5em; padding-top: .5em;"><b>List all MATHEMATICS courses
+                <p id="box-heading"><b>List all MATHEMATICS courses
                         which you have taken </b><br>
                     <span style="font-size: 11px;font-style: italic">(maximum upto 30 courses) </span></p>
                 <div class="col-lg-8">
@@ -107,7 +107,7 @@
             </div>
 
             <div class="form-group" id="field-group">
-                <p style="padding-left: .5em; padding-top: .5em;"><b>List all SCIENCE courses
+                <p id="box-heading"><b>List all SCIENCE courses
                         which you have taken </b><br>
                     <span style="font-size: 11px;font-style: italic">(maximum upto 30 courses) </span></p>
                 <div class="col-lg-8">
@@ -134,7 +134,7 @@
             </div>
 
             <div class="form-group" id="field-group">
-                <p style="padding-left: .5em; padding-top: .5em;"><b>List all Mathematics & Science courses which
+                <p id="box-heading"><b>List all Mathematics & Science courses which
                         you are CURRENTLY taking </b><br>
                     <span style="font-size: 11px;font-style: italic">(maximum upto 30 courses) </span></p>
                 <div class="col-lg-8">
@@ -168,6 +168,6 @@
                 </div>
             </div>
         </fieldset>
-    </form>
+    {!! Form::close() !!}
 @stop
 

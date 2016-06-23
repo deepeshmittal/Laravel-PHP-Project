@@ -24,13 +24,13 @@
         <div class="clear"></div>
         </div>
     </header>
-    <div class="container">
+    <div class="container" id="main_div">
         <div class="col-md-12">
             <br>
             <h3><b>Student Application Form</b></h3>
             <p><small>
                     <b>** Applicants will be notified of acceptance by March 20.</b> However, if you receive an alternative offer and
-                    you need earlier notification to help you make a decision, send an email to preston.swan@asu.edu to
+                    you need earlier notification to help you make a decision, send an email to Ciera Duran (<a href="mailto:crduran@asu.edu">crduran@asu.edu</a>) to
                     alert us of your situation.
                 </small></p>
             <hr>
