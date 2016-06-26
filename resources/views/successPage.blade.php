@@ -27,16 +27,12 @@
     <div class="container" id="main_div">
         <div class="col-md-12">
             <br>
-            <h3><b>Student Application Form</b></h3>
-            <p><small>
-                    <b>** Applicants will be notified of acceptance by March 20.</b> However, if you receive an alternative offer and
-                    you need earlier notification to help you make a decision, send an email to Ciera Duran (<a href="mailto:crduran@asu.edu">crduran@asu.edu</a>) to
-                    alert us of your situation.
-                </small></p>
-            <hr>
-
-            @yield('content')
-
+            <div class="alert alert-dismissible alert-success">
+                Thank you for submitting your MTBI application. Please email
+                <a href="mailto:crduran@asu.edu">crduran@asu.edu</a> with any question.<br>
+                <a href="http://ganga.la.asu.edu/mtbiregistration/register"> Please click </a>
+                if you want to register another student.
+            </div>
             <hr>
             <div class="modal-footer">
                 <p style="text-align: center;font-size: 0.8em;font-weight: bold">MTBI / SUMS | Carlos Castillo-Chavez<br>
@@ -46,7 +42,5 @@
                 </p>
             </div>
         </div>
-        <br>
     </div>
 </body>
-</html>

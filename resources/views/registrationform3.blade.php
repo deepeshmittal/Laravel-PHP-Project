@@ -2,18 +2,19 @@
 
 @section('content')
     <h4 style="margin-bottom: 1em;margin-top:1.5em;text-decoration: underline;">Other Details & Declaration</h4>
-    {!! Form::open(array('class'=>'form-horizontal')) !!}
+    {!! Form::open(array('class'=>'form-horizontal','action'=>'StudentRegistration@submitPageThree',
+    'enctype'=>'multipart/form-data')) !!}
         <fieldset>
             <div class="form-group" id="field-group">
                 <p id="box-heading"><b>Attach statement of interest
                         and other files</b> <br><span style="font-size: 11px;font-style: italic">
                         (Maximum file size allowed: <b>5MB</b>)</span></p>
                 <div class="col-lg-12" style="margin-bottom: 15px;">
-                    <input type="file" class="form-control" id="attachFile1">
+                    <input type="file" class="form-control" id="attachFile1" name="attachFileOne">
                 </div>
 
                 <div class="col-lg-12" style="margin-bottom: 15px;">
-                    <input type="file" class="form-control" id="attachFile2">
+                    <input type="file" class="form-control" id="attachFile2" name="attachFileTwo">
                 </div>
             </div>
 
@@ -21,7 +22,7 @@
                 <p id="box-heading"><b>Please list two recent mathematical
                         or science related experiences or activities that you have had:</b></p>
                 <div class="col-lg-12" style="margin-bottom: 15px">
-                    <textarea class="form-control cust-textArea"  rows="3" id="expandact"
+                    <textarea class="form-control cust-textArea"  rows="3" id="recentExpAct" name="recentExpAct"
                               placeholder="Please write here.."></textarea>
                 </div>
             </div>
@@ -75,10 +76,10 @@
                         <option value="n">No</option>
                     </select>
                 </div>
-                <span id="dateMTBIPart" style="display: none">
+                <span id="dateMTBIPartSection" style="display: none">
                     <label for="dateMTBIPart" class="col-lg-3 control-label required">Please specify (MM/YYYY)</label>
                     <div class="col-lg-3" style="margin-bottom: 15px">
-                        <input type="month" class="form-control" id="dateGRE" required>
+                        <input type="month" class="form-control" id="dateMTBIPart" name="dateMTBIPart" required>
                     </div>
                 </span>
             </div>
@@ -88,8 +89,8 @@
                     How did you hear about MTBI? Please be specific
                     (include contact email address if faculty member or advisor)</label><br><br>
                 <div class="col-lg-12" style="margin-bottom: 15px">
-                    <textarea class="form-control cust-textArea"  rows="3" id="MTBIRef"
-                              placeholder="Please write here.."></textarea>
+                    <textarea class="form-control cust-textArea"  rows="3" id="MTBIRef" name="hearAboutMTBI"
+                              placeholder="Please write here.." required></textarea>
                 </div>
             </div>
 
@@ -97,23 +98,24 @@
                 <p id="box-heading"><b>Please indicate the NAME of the faculty completing your reference form</b></p>
                 <label for="refName" class="col-lg-2 control-label required">Name</label>
                 <div class="col-lg-2" style="margin-bottom: 5px;">
-                    <input type="text" class="form-control" id="refName" placeholder="Name" required>
+                    <input type="text" class="form-control" id="refName" name="refFacultyName" placeholder="Name" required>
                 </div>
                 <label for="refTitle" class="col-lg-2 control-label required">Title</label>
                 <div class="col-lg-2" style="margin-bottom: 5px;">
-                    <input type="text" class="form-control" id="refTitle" placeholder="Title" required>
+                    <input type="text" class="form-control" id="refTitle" name="refFacultyTitle" placeholder="Title" required>
                 </div>
                 <label for="refAddress" class="col-lg-2 control-label">Address</label>
                 <div class="col-lg-2" style="margin-bottom: 5px;">
-                    <input type="text" class="form-control" id="refAddress" placeholder="Address">
+                    <input type="text" class="form-control" id="refAddress" name="refFacultyAddress" placeholder="Address">
                 </div>
                 <label for="refEmail" class="col-lg-2 control-label required">Email</label>
                 <div class="col-lg-2" style="margin-bottom: 20px;">
-                    <input type="email" class="form-control" id="refEmail" placeholder="Email" required>
+                    <input type="email" class="form-control" id="refEmail" name="refFacultyEmail" placeholder="Email" required>
                 </div>
                 <label for="refPhoneNumber" class="col-lg-2 control-label">Phone Number</label>
                 <div class="col-lg-2" style="margin-bottom: 20px;">
-                    <input type="text" class="form-control" id="refPhoneNumber" placeholder="Phone Number">
+                    <input type="text" class="form-control" id="refPhoneNumber" name="refFacultyPhoneNumber"
+                           placeholder="Phone Number">
                 </div>
             </div>
 
@@ -131,8 +133,9 @@
                         program.</p>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="commit-check" required><span style="font-style: italic"><b>Yes I fully
-                                    understand and am in agreement with the above terms</b></span>
+                            <input type="checkbox" id="agreeToTermsCheck" onchange="toggleSubmit()" required>
+                            <span style="font-style: italic"><b>Yes I fully understand and am in
+                                    agreement with the above terms</b></span>
                         </label>
                     </div>
                 </div>
@@ -141,8 +144,8 @@
             <div class="form-group">
                 <div class="col-lg-10">
                     <button type="reset" class="btn btn-default btn-sm" style="margin-right: 1em;">Reset</button>
-                    <button type="button" class="btn btn-primary btn-sm" style="margin-right: 1em;">Back</button>
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    {{--<button type="button" class="btn btn-primary btn-sm" style="margin-right: 1em;">Back</button>--}}
+                    <button type="submit" id="submitFinal" class="btn btn-primary btn-sm" disabled>Submit</button>
                 </div>
             </div>
         </fieldset>

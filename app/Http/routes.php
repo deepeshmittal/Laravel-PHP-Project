@@ -23,3 +23,7 @@ Route::post('submit/2', 'StudentRegistration@submitPageTwo');
 Route::get('register/3', 'StudentRegistration@registerPageThree');
 
 Route::post('submit/3', 'StudentRegistration@submitPageThree');
+
+Route::get('success', 'StudentRegistration@successPage');
+
+Route::get('error', 'StudentRegistration@errorPage');
