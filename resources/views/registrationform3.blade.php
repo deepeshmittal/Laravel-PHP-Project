@@ -1,6 +1,11 @@
 @extends('header')
 
 @section('content')
+    @if ($errors->has('g-recaptcha-response'))
+       <div class="alert alert-danger" id="captcha-error-div" role="alert">
+          <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+       </div>
+    @endif
     <h4 style="margin-bottom: 1em;margin-top:1.5em;text-decoration: underline;">Other Details & Declaration</h4>
     {!! Form::open(array('class'=>'form-horizontal','action'=>'StudentRegistration@submitPageThree',
     'enctype'=>'multipart/form-data')) !!}
@@ -140,7 +145,12 @@
                     </div>
                 </div>
             </div>
-
+	    <div class="form-group">
+                <div class="col-lg-12" id="captcha-display-block">
+			{!! app('captcha')->display(); !!}
+                </div>
+            </div>
+	    
             <div class="form-group">
                 <div class="col-lg-10">
                     <button type="reset" class="btn btn-default btn-sm" style="margin-right: 1em;">Reset</button>

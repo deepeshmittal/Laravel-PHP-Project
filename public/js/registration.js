@@ -43,6 +43,8 @@ function toggleSubmit() {
     var submit_button  = document.getElementById('submitFinal');
     if ( agree_to_terms.checked == true ) {
         submit_button.disabled = false;
+	//var div = document.getElementById('captcha-display-block'); 
+	//div.innerHTML = "{!! app('captcha')->display(); !!}";
         // $('#captcha_section').show();
     } else {
         submit_button.disabled = true;

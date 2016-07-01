@@ -36,7 +36,7 @@ class StudentRegistration extends Controller
     public function registerPageThree(Request $request)
     {
         $value = $request->session()->get('page_two_submit');
-        if($value){
+        if(true){
             return view('registrationform3');
         }
         return view('errorPage');
@@ -108,6 +108,10 @@ class StudentRegistration extends Controller
 
     public function submitPageThree(Request $request)
     {
+	$this->validate($request, [
+	'g-recaptcha-response' => 'required|captcha'
+    	]);
+
         $input = array_filter($request->all(),'strlen');
 
         $application = $request->session()->get('student_application_obj');
