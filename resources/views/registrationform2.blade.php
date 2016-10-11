@@ -2,7 +2,7 @@
 
 @section('content')
     <h4 style="margin-bottom: 1em;margin-top:1.5em;text-decoration: underline;">Education Details</h4>
-    {!! Form::open(array('class'=>'form-horizontal','action'=>'StudentRegistration@submitPageTwo')) !!}
+    {!! Form::open(array('class'=>'form-horizontal','action'=>'StudentRegistration@submitPageTwo','onsubmit'=>"return confirm('Do you really want to submit the form?');")) !!}
         <fieldset>
             <div class="form-group">
                 <label style="padding-top: 0" for="currentCollege" class="col-lg-4 control-label required">
@@ -47,8 +47,8 @@
                     <select class="form-control" id="takenGRE" name="takenGRE" required
                             onchange="javascript:toggleEnablingGREAttendedDate()">
                         <option value="">Select</option>
-                        <option value="y">Yes</option>
-                        <option value="n">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
                 <span id="dateGREDetail" style="display: none">

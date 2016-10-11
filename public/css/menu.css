@@ -97,3 +97,50 @@ p#box-heading{
     padding-left: 15px;
     padding-top: 7px;
 }
+
+.no-padding{
+    padding:0px;
+}
+
+table#application-table{
+    width:100%;
+    max-width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+table#application-table td,table#application-table th{
+    border: 1px solid #bfbfbf;
+    border-collapse: collapse;
+}
+
+table#application-table th{
+    text-align: center;
+
+}
+table#application-table td{
+    padding-left: 5px;
+
+}
+
+.fa-exclamation-triangle{
+    color: orange;
+}
+
+.fa-check{
+    color:green;
+}
+
+.fa-times{
+    color:red;
+}
+
+th.active, td.active{
+    background-color: #e0e0e0;
+}
+
+
+table#application-table td.full-row{
+    background-color: #2196f3;
+    color: #fff;
+    padding-left: 15px;
+}

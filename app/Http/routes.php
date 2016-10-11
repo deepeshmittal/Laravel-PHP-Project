@@ -11,6 +11,13 @@
 |
 */
 
+Route::get('admin/review-applications', 'AdminView@viewAllApplications');
+
+Route::get('admin/application-details/id={app_id}', 'AdminView@viewApplicationDetails');
+
+Route::post('admin/approve', 'AdminView@approveApplication');
+
+Route::post('admin/reject', 'AdminView@rejectApplication');
 
 Route::get('register', 'StudentRegistration@registerPageOne');
 

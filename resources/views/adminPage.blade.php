@@ -4,7 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>MTBI Registration</title>
+    <title>MTBI Admin</title>
     <link rel="shortcut icon" href="">
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">--}}
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}" />
@@ -27,11 +27,38 @@
 <div class="container" id="main_div">
     <div class="col-md-12">
         <br>
-        <div class="alert alert-dismissible alert-warning">
-            <strong>Oh snap!</strong> Something is wrong !! Please start your registration again using below link:<br>
-            <a href="http://ganga.la.asu.edu/mtbiregistration/register">Click Here</a>
-        </div>
+        <h3><b>Application Review Page</b></h3>
         <hr>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Applications</h3>
+            </div>
+            <div class="panel-body no-padding">
+                <table id="application-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%">Application Number</th>
+                            <th style="width: 25%">Name</th>
+                            <th style="width: 25%">Submitted On</th>
+                            <th style="width: 25%">Application Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($application as $app)
+                            <tr>
+                                <td style="text-align: center"><a href="/mtbiregistration/admin/application-details/id={{ $app->id }}">{{ $app->id }}</a></td>
+                                <td>{{ $app->firstName }} {{ $app->middleName }} {{ $app->lastName }}</td>
+                                <td>{{ $app->created_at }}</td>
+                                <td style="text-align: center">@if ($app->status == "pending") <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    @elseif($app->status == "approved") <i class="fa fa-check" aria-hidden="true"></i>
+                                    @elseif($app->status == "rejected") <i class="fa fa-times" aria-hidden="true"></i>
+                                    @endif</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="modal-footer">
             <p style="text-align: center;font-size: 0.8em;font-weight: bold">MTBI / SUMS | Carlos Castillo-Chavez<br>
                 Arizona State University<br>

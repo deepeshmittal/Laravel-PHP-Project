@@ -36,7 +36,7 @@ class StudentRegistration extends Controller
     public function registerPageThree(Request $request)
     {
         $value = $request->session()->get('page_two_submit');
-        if(true){
+        if($value){
             return view('registrationform3');
         }
         return view('errorPage');
@@ -48,6 +48,7 @@ class StudentRegistration extends Controller
         $input = array_filter($request->all(),'strlen');
 
         $application = new StudentApplication($input);
+        error_log(print_r($application->toArray(),true));
 
         if (!strcmp($input['addressSameAsAbove'],'y')){
             $application->permanentStreet = $input['currentStreet'];
@@ -136,7 +137,7 @@ class StudentRegistration extends Controller
             $filename = $application_id . '_file2.' . $origFileExt;
             Storage::disk('local')->put($filename, File::get($file));
         }
-
+        $application->status = 'pending';
         $application->update();
 
         $otherDetailCollection = $request->session()->get('student_other_detail_obj');

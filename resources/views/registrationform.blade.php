@@ -2,7 +2,7 @@
 
 @section('content')
     <h4 style="margin-bottom: 1em;margin-top:1.5em;text-decoration: underline;">Personal Information</h4>
-    {!! Form::open(array('class'=>'form-horizontal','action'=>'StudentRegistration@submitPageOne')) !!}
+    {!! Form::open(array('class'=>'form-horizontal','action'=>'StudentRegistration@submitPageOne','onsubmit'=>"return confirm('Do you really want to submit the form?');")) !!}
         <fieldset>
 
             <div class="form-group">
@@ -35,8 +35,8 @@
                 <div class="col-lg-2 text_div">
                     <select class="form-control" id="gender" name="gender" required>
                         <option value="">Select</option>
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
                     </select>
                 </div>
 
@@ -76,8 +76,8 @@
                     <select class="form-control" id="is_us_citizen" name="isUsCitizen" required
                             onchange="javascript:onChangeIsUSCitizen()">
                         <option value="">Select</option>
-                        <option value="y">Yes</option>
-                        <option value="n">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
             </div>
@@ -90,8 +90,8 @@
                         <select class="form-control" name="isPermanentResident" id="is_permanent_resident"
                                 onchange="javascript:toggleEnablingAlienResidentNo()" required>
                             <option value="">Select</option>
-                            <option value="y">Yes</option>
-                            <option value="n">No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <span id='alien_resident_detail' style='display:none'>
@@ -192,8 +192,8 @@
                     <select name="addressSameAsAbove" id="addressSameAsAbove"
                             onchange="javascript:enablingPermanentAddressBlock()" required>
                         <option value="">Select</option>
-                        <option value="y">Yes</option>
-                        <option value="n">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
                 <span id="permanentAddressBlock" style="display: none">

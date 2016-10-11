@@ -8,7 +8,7 @@
     @endif
     <h4 style="margin-bottom: 1em;margin-top:1.5em;text-decoration: underline;">Other Details & Declaration</h4>
     {!! Form::open(array('class'=>'form-horizontal','action'=>'StudentRegistration@submitPageThree',
-    'enctype'=>'multipart/form-data')) !!}
+    'enctype'=>'multipart/form-data','onsubmit'=>"return confirm('Do you really want to submit the form?');")) !!}
         <fieldset>
             <div class="form-group" id="field-group">
                 <p id="box-heading"><b>Attach statement of interest
@@ -77,8 +77,8 @@
                     <select class="form-control" id="prevMTBIPart" name="prevMTBIPart" required
                             onchange="javascript:enablingMTBIAttendedDate()">
                         <option value="">Select</option>
-                        <option value="y">Yes</option>
-                        <option value="n">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
                 <span id="dateMTBIPartSection" style="display: none">
@@ -147,7 +147,7 @@
             </div>
 	    <div class="form-group">
                 <div class="col-lg-12" id="captcha-display-block">
-			{!! app('captcha')->display(); !!}
+			{!! app('captcha')->display() !!}
                 </div>
             </div>
 	    

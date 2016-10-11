@@ -13,17 +13,17 @@ class CreateStudentApplicationsTable extends Migration
     public function up()
     {
         Schema::create('student_applications', function (Blueprint $table) {
-            $table->increments('application_id');
+            $table->increments('id');
             $table->string('lastName',50)->nullable();
             $table->string('firstName',50)->nullable();
             $table->string('middleName',30)->nullable();
             $table->string('nickName',50)->nullable();
-            $table->string('gender',1)->nullable();
+            $table->string('gender',10)->nullable();
             $table->date('dateOfBirth')->nullable();
             $table->string('ethnicity',30)->nullable();
             $table->string('otherEthnicity',30)->nullable();
-            $table->string('isUsCitizen',1)->nullable();
-            $table->string('isPermanentResident',1)->nullable();
+            $table->string('isUsCitizen',10)->nullable();
+            $table->string('isPermanentResident',10)->nullable();
             $table->string('alienResidentNo',20)->nullable();
             $table->string('birthCity',30)->nullable();
             $table->string('birthState',30)->nullable();
@@ -37,7 +37,7 @@ class CreateStudentApplicationsTable extends Migration
             $table->string('currentMobilePhone',15)->nullable();
             $table->string('emailAddress',50)->nullable();
             $table->string('alternateEmailAddress',50)->nullable();
-            $table->string('addressSameAsAbove',1)->nullable();
+            $table->string('addressSameAsAbove',10)->nullable();
             $table->string('permanentStreet',80)->nullable();
             $table->string('permanentCity',30)->nullable();
             $table->string('permanentState',30)->nullable();
@@ -49,12 +49,12 @@ class CreateStudentApplicationsTable extends Migration
             $table->string('minorFieldStudy',25)->nullable();
             $table->string('currentGraduationDate',20)->nullable();
             $table->string('overallGPA',10)->nullable();
-            $table->string('takenGRE',1)->nullable();
+            $table->string('takenGRE',10)->nullable();
             $table->string('dateGRE',20)->nullable();
             $table->string('attachFileOne',100)->nullable();
             $table->string('attachFileTwo',100)->nullable();
             $table->string('recentExpAct',200)->nullable();
-            $table->string('prevMTBIPart',1)->nullable();
+            $table->string('prevMTBIPart',10)->nullable();
             $table->string('dateMTBIPart',20)->nullable();
             $table->string('hearAboutMTBI',200)->nullable();
             $table->string('refFacultyName',50)->nullable();
@@ -63,6 +63,7 @@ class CreateStudentApplicationsTable extends Migration
             $table->string('refFacultyEmail',50)->nullable();
             $table->string('refFacultyPhoneNumber',20)->nullable();
             $table->timestamps();
+            $table->string('status',30)->default('pending');
         });
     }
 
