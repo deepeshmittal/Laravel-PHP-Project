@@ -237,9 +237,10 @@
             </div>
 
             <div class="form-group">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <button type="reset" class="btn btn-default btn-sm" style="margin-right: 1em;">Reset</button>
                     <button type="submit" class="btn btn-primary btn-sm">Save & Continue</button>
+                    <a style="float:right;" href="https://mtbi.asu.edu/" class="btn btn-warning btn-sm">MTBI Home</a>
                 </div>
             </div>
         </fieldset>

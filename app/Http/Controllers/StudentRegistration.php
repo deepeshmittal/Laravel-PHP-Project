@@ -125,16 +125,16 @@ class StudentRegistration extends Controller
         $file = $request->file('attachFileOne');
         if($file){
             $application->attachFileOne = $request->file('attachFileOne')->getClientOriginalName();
-            $origFileExt = $request->file('attachFileOne')->getClientOriginalExtension();
-            $filename = $application_id . '_file1.' . $origFileExt;
+            //$origFileExt = $request->file('attachFileOne')->getClientOriginalExtension();
+            $filename = $application_id . '_' . $request->file('attachFileOne')->getClientOriginalName();
             Storage::disk('local')->put($filename, File::get($file));
         }
 
         $file = $request->file('attachFileTwo');
         if($file){
             $application->attachFileTwo = $request->file('attachFileTwo')->getClientOriginalName();
-            $origFileExt = $request->file('attachFileTwo')->getClientOriginalExtension();
-            $filename = $application_id . '_file2.' . $origFileExt;
+            //$origFileExt = $request->file('attachFileTwo')->getClientOriginalExtension();
+            $filename = $application_id . '_' . $request->file('attachFileTwo')->getClientOriginalName();
             Storage::disk('local')->put($filename, File::get($file));
         }
         $application->status = 'pending';
@@ -185,7 +185,7 @@ class StudentRegistration extends Controller
     public function successPage(Request $request){
 
         $value = $request->session()->get('page_three_submit');
-        if($value){
+        if(true){
             $request->session()->forget('student_application_obj');
             $request->session()->forget('student_other_detail_obj');
             $request->session()->forget('student_course_detail_obj');

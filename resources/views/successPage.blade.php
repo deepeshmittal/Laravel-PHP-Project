@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="top_banner" style="background:#fff;">
-        <a href="https://mtbi.asu.edu/">{{ Html::image('image/asu_logo.png','School of Mathematical and Statistical Sciences',array('width' => 190, 'height' => 70)) }}</a>
+        <a href="http://www.asu.edu/">{{ Html::image('image/asu_logo.png','School of Mathematical and Statistical Sciences',array('width' => 190, 'height' => 70)) }}</a>
     </div>
     <header style="padding: 10px 0px 10px 20px;background-color:#303436;">
         <div class="inner relative"></div>
@@ -27,7 +27,11 @@
     <div class="container" id="main_div">
         <div class="col-md-12">
             <br>
-            <div class="alert alert-dismissible alert-success">
+            <div class="col-md-12">
+                <a style="float:right;" href="https://mtbi.asu.edu/" class="btn btn-warning btn-sm">MTBI Home</a>
+            </div>
+            <br>
+            <div class="alert alert-dismissible alert-success" style="margin-top:30px;">
                 Thank you for submitting your MTBI application. Please email
                 <a href="mailto:crduran@asu.edu">crduran@asu.edu</a> with any question.<br>
                 <a href="http://ganga.la.asu.edu/mtbiregistration/register"> Please click </a>

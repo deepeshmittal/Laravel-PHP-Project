@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="top_banner" style="background:#fff;">
-    <a href="https://mtbi.asu.edu/">{{ Html::image('image/asu_logo.png','School of Mathematical and Statistical Sciences',array('width' => 190, 'height' => 70)) }}</a>
+    <a href="http://www.asu.edu/">{{ Html::image('image/asu_logo.png','School of Mathematical and Statistical Sciences',array('width' => 190, 'height' => 70)) }}</a>
 </div>
 <header style="padding: 10px 0px 10px 20px;background-color:#303436;">
     <div class="inner relative"></div>
@@ -26,6 +26,12 @@
 </header>
 <div class="container" id="main_div">
     <div class="col-md-12">
+        
+        <br><br>
+        <div class="col-md-12">
+            <a style="float:right" href="{{\Illuminate\Support\Facades\URL::previous()}}" class="btn btn-primary btn-sm">Go Back</a>
+            <a style="float:right; margin-right:15px" href="https://mtbi.asu.edu/" class="btn btn-warning btn-sm">MTBI Home</a>
+        </div>
         <br>
         <h3><b>Application Details</b></h3>
         <hr>
@@ -76,13 +82,13 @@
                             <td class="active" style="width: 35%;font-weight: bold">Is U.S Citizen?</td>
                             <td>{{ $application->isUsCitizen }}</td>
                         </tr>
-                        @if($application->isUsCitizen == "n")
+                        @if($application->isUsCitizen == "No")
                         <tr>
                             <td class="active" style="width: 35%;font-weight: bold">Permanent Resident of US ?</td>
                             <td>{{ $application->isPermanentResident }}</td>
                         </tr>
                         @endif
-                        @if($application->isPermanentResident == "y")
+                        @if($application->isPermanentResident == "Yes")
                             <tr>
                                 <td class="active" style="width: 35%;font-weight: bold">Alien Resident Number</td>
                                 <td>{{ $application->alienResidentNo }}</td>
@@ -145,7 +151,7 @@
                         <tr>
                             <td class="full-row" colspan="2">Permanent Address</td>
                         </tr>
-                        @if($application->addressSameAsAbove == "y")
+                        @if($application->addressSameAsAbove == "Yes")
                             <tr>
                                 <td colspan="2">Same as current address mentioned above</td>
                             </tr>
@@ -203,7 +209,7 @@
                             <td class="active" style="width: 35%;font-weight: bold">Has taken the GRE?</td>
                             <td>{{ $application->takenGRE }}</td>
                         </tr>
-                        @if($application->takenGRE == "y")
+                        @if($application->takenGRE == "Yes")
                             <tr>
                                 <td class="active" style="width: 35%;font-weight: bold">GRE Date</td>
                                 <td>{{ $application->dateGRE }}</td>
@@ -292,37 +298,44 @@
                         <tr>
                             <td class="full-row" colspan="3">Attachments : Statement of interest and other files</td>
                         </tr>
+                    </tbody>
+                </table>
+                <table id="application-table">
+                    <tbody>
                         <tr>
-                            <td colspan="3">N/A</td>
+                            <td style="text-align:center"><a href={{ route('fetch.file', 
+                                                        ['id' => $application->id, 'file' => $file1]) }}>File 1</a></td>
+                            <td style="text-align:center"><a href={{ route('fetch.file', 
+                                                        ['id' => $application->id, 'file' => $file2]) }}>File 2</a></td>
                         </tr>
                         <tr>
-                            <td class="full-row" colspan="3">List awards, scholarships, or honors</td>
+                            <td class="full-row" colspan="2">List awards, scholarships, or honors</td>
                         </tr>
                         @if(count($award) <= 0)
                             <tr>
-                                <td colspan="3">N/A</td>
+                                <td colspan="2">N/A</td>
                             </tr>
                         @endif
                         @foreach($award as $row)
                             <tr>
-                                <td colspan="3">{{$row->detailValue}}</td>
+                                <td colspan="2">{{$row->detailValue}}</td>
                             </tr>
                         @endforeach
                         <tr>
-                            <td class="full-row" colspan="3">Other summer programs applied</td>
+                            <td class="full-row" colspan="2">Other summer programs applied</td>
                         </tr>
                         @if(count($program) <= 0)
                             <tr>
-                                <td colspan="3">N/A</td>
+                                <td colspan="2">N/A</td>
                             </tr>
                         @endif
                         @foreach($program as $row)
                             <tr>
-                                <td colspan="3">{{$row->detailValue}}</td>
+                                <td colspan="2">{{$row->detailValue}}</td>
                             </tr>
                         @endforeach
                         <tr>
-                            <td class="full-row" colspan="3">Other Details</td>
+                            <td class="full-row" colspan="2">Other Details</td>
                         </tr>
                     </tbody>
                 </table>
@@ -336,7 +349,7 @@
                             <td class="active" style="width: 35%;font-weight: bold">Participated in MTBI before?</td>
                             <td>{{ $application->prevMTBIPart }}</td>
                         </tr>
-                        @if($application->prevMTBIPart == 'y')
+                        @if($application->prevMTBIPart == 'Yes')
                             <tr>
                                 <td class="active" style="width: 35%;font-weight: bold">MTBI participation date</td>
                                 <td>{{ $application->dateMTBIPart }}</td>

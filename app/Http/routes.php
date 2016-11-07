@@ -15,6 +15,10 @@ Route::get('admin/review-applications', 'AdminView@viewAllApplications');
 
 Route::get('admin/application-details/id={app_id}', 'AdminView@viewApplicationDetails');
 
+Route::get('admin/application-details/getfile/id={app_id}&file={file}', [
+	'as' => 'fetch.file',
+	'uses' => 'AdminView@getFileController']);
+
 Route::post('admin/approve', 'AdminView@approveApplication');
 
 Route::post('admin/reject', 'AdminView@rejectApplication');

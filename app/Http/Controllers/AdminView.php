@@ -6,9 +6,11 @@ use App\StudentApplication;
 use App\StudentApplicationCourseDetail;
 use App\StudentApplicationOtherDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Input;
 
 class AdminView extends Controller
 {
@@ -48,6 +50,8 @@ class AdminView extends Controller
             ['detailType','=','Program']
         ])->get();
 
+        $file1 = $application->attachFileOne;
+        $file2 = $application->attachFileTwo;
 
         return view('applicationDetails')->with([
             "application" => $application,
@@ -56,7 +60,9 @@ class AdminView extends Controller
             "science_courses" => $science_courses,
             "mathscience_courses" => $mathscience_courses,
             "award" => $award,
-            "program" => $program
+            "program" => $program,
+            "file1" => $file1,
+            "file2" => $file2
         ]);
     }
 
@@ -76,5 +82,16 @@ class AdminView extends Controller
         return redirect('admin/review-applications')->with([
             "application" => $application
         ]);
+    }
+
+    public function getFileController(Request $request, $app_id, $file){
+        $file_path = storage_path() . "/app/mtbi_application_files/" . $app_id . "_" . $file;
+        if (file_exists($file_path)){
+            return Response::download($file_path, $file, [
+            'Content-Length: '. filesize($file_path)
+        ]);    
+        }else{
+            return ("<h1>Error : File Not Found<h1>");
+        }
     }
 }

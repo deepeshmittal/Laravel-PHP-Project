@@ -65,6 +65,8 @@ class CreateStudentApplicationsTable extends Migration
             $table->timestamps();
             $table->string('status',30)->default('pending');
         });
+
+        DB::update("ALTER TABLE student_applications AUTO_INCREMENT = 1000;");
     }
 
     /**
