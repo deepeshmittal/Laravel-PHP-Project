@@ -13,6 +13,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ URL::asset('css/menu.css') }}" />
     <script type="text/javascript" src="{{ URL::asset('js/registration.js') }}"></script>
+    <script>
+        function changeApplicationYear(){
+            var year = $('#application-year').val();
+            if(year == ""){
+                var route = "{{route('review.application')}}";
+            }else {
+                var route = "{{route('review.application',['year' => 'year-param'])}}";
+                route = route.replace("year-param", year);
+            }
+            window.location.href = route;
+        }
+    </script>
+
 </head>
 <body>
 <div class="top_banner" style="background:#fff;">
@@ -32,6 +45,20 @@
         </div>
         <h3><b>Application Review Page</b></h3>
         <hr>
+        <div class="col-lg-3" style="float: right">
+            <select class="form-control" id="application-year" onchange="changeApplicationYear()">
+                <option value="">Select Year</option>
+                @foreach($app_term as $term)
+                    @if($term['application_term'] == $dropdown_value)
+                    <option value="{{ $term['application_term'] }}" selected>{{ $term['application_term'] }}</option>
+                    @else
+                        <option value="{{ $term['application_term'] }}">{{ $term['application_term'] }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+        <br><br>
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Applications</h3>

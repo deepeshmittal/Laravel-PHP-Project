@@ -7,6 +7,7 @@ use App\StudentApplicationCourseDetail;
 use App\StudentApplicationOtherDetail;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Session;
@@ -48,7 +49,6 @@ class StudentRegistration extends Controller
         $input = array_filter($request->all(),'strlen');
 
         $application = new StudentApplication($input);
-        error_log(print_r($application->toArray(),true));
 
         if (!strcmp($input['addressSameAsAbove'],'y')){
             $application->permanentStreet = $input['currentStreet'];
@@ -137,6 +137,8 @@ class StudentRegistration extends Controller
             $filename = $application_id . '_' . $request->file('attachFileTwo')->getClientOriginalName();
             Storage::disk('local')->put($filename, File::get($file));
         }
+        $application_term = Config::get('view.application_semester');
+        $application->application_term = $application_term;
         $application->status = 'pending';
         $application->update();
 

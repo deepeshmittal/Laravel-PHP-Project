@@ -7,7 +7,7 @@ use App\StudentApplicationCourseDetail;
 use App\StudentApplicationOtherDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Config;
 
 
 use App\Http\Requests;
@@ -15,11 +15,20 @@ use App\Http\Requests;
 class AdminView extends Controller
 {
     //
-    public function viewAllApplications(Request $request)
+    public function viewAllApplications(Request $request,$year = null)
     {
-        $application = StudentApplication::all();
+        if(is_null($year)){
+            $application_term = Config::get('view.application_semester');
+        }else{
+            $application_term = $year;
+        }
+
+        $application = StudentApplication::where('application_term',$application_term)->get();
+        $app_term = StudentApplication::select('application_term')->groupBy('application_term')->get()->toArray();
         return view('adminPage')->with([
-            "application" => $application
+            "application" => $application,
+            "app_term" => $app_term,
+            "dropdown_value" => $year
         ]);
     }
 
@@ -84,6 +93,15 @@ class AdminView extends Controller
         ]);
     }
 
+    public function deleteApplication(Request $request){
+        $app_id = $request->input('application-id');
+        StudentApplication::where('id',$app_id)->delete();
+        $application = StudentApplication::all();
+        return redirect('admin/review-applications')->with([
+            "application" => $application
+        ]);
+    }
+    
     public function getFileController(Request $request, $app_id, $file){
         $file_path = storage_path() . "/app/mtbi_application_files/" . $app_id . "_" . $file;
         if (file_exists($file_path)){

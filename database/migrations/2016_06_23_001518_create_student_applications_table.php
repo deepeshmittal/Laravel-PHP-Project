@@ -64,6 +64,8 @@ class CreateStudentApplicationsTable extends Migration
             $table->string('refFacultyPhoneNumber',20)->nullable();
             $table->timestamps();
             $table->string('status',30)->default('pending');
+            $table->string('application_term',30)->default('NA');
+
         });
 
         DB::update("ALTER TABLE student_applications AUTO_INCREMENT = 1000;");

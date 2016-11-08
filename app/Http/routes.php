@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('admin/review-applications', 'AdminView@viewAllApplications');
+Route::get('admin/review-applications/{year?}', [
+	'as' => 'review.application',
+	'uses' => 'AdminView@viewAllApplications'
+]);
 
 Route::get('admin/application-details/id={app_id}', 'AdminView@viewApplicationDetails');
 
@@ -20,6 +23,8 @@ Route::get('admin/application-details/getfile/id={app_id}&file={file}', [
 	'uses' => 'AdminView@getFileController']);
 
 Route::post('admin/approve', 'AdminView@approveApplication');
+
+Route::post('admin/delete', 'AdminView@deleteApplication');
 
 Route::post('admin/reject', 'AdminView@rejectApplication');
 

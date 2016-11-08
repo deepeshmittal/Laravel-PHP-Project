@@ -386,17 +386,22 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-12">
-            <a href="{{\Illuminate\Support\Facades\URL::previous()}}" class="btn btn-primary btn-sm">Go Back</a>
+        <div class="col-md-12 no-padding">
+            <a href="{{\Illuminate\Support\Facades\URL::previous()}}" style="float: left;margin-right: 10px;margin-top: 3px;" class="btn btn-primary btn-xs">Go Back</a>
+            {!! Form::open(array('class'=>'form-horizontal', 'style'=>'float: left', 'action'=>'AdminView@deleteApplication','onsubmit'=>"return confirm('Do you want to Delete this application?');")) !!}
+            <input type="hidden" name ="application-id" value={{$application->id}}>
+            <button class="btn btn-danger btn-xs">Delete</button>
+            {!! Form::close() !!}
             {!! Form::open(array('class'=>'form-horizontal','style'=>'float: right','action'=>'AdminView@rejectApplication','onsubmit'=>"return confirm('Do you want to REJECT this application?');")) !!}
             <input type="hidden" name ="application-id" value={{$application->id}}>
-            <button class="btn btn-danger btn-sm">Reject</button>
+            <button class="btn btn-warning btn-xs">Reject</button>
             {!! Form::close() !!}
-            {!! Form::open(array('class'=>'form-horizontal','style'=>'float: right;margin-right: 15px;','action'=>'AdminView@approveApplication','onsubmit'=>"return confirm('Do you want to APPROVE this application?');")) !!}
+            {!! Form::open(array('class'=>'form-horizontal','style'=>'float: right;margin-right: 10px;','action'=>'AdminView@approveApplication','onsubmit'=>"return confirm('Do you want to APPROVE this application?');")) !!}
             <input type="hidden" name ="application-id" value={{$application->id}}>
-            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+            <button type="submit" class="btn btn-success btn-xs">Approve</button>
             {!! Form::close() !!}
         </div>
+        <br><br>
         <div class="modal-footer">
             <p style="text-align: center;font-size: 0.8em;font-weight: bold">MTBI / SUMS | Carlos Castillo-Chavez<br>
                 Arizona State University<br>

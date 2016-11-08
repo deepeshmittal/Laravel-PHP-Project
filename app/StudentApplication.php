@@ -53,5 +53,6 @@ class StudentApplication extends Model
         'refFacultyAddress',
         'refFacultyEmail',
         'refFacultyPhoneNumber',
+        'application_term',
     );
 }

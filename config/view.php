@@ -30,4 +30,15 @@ return [
 
     'compiled' => realpath(storage_path('framework/views')),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Term
+    |--------------------------------------------------------------------------
+    |
+    | Mention the current term for student applications
+    |
+    */
+
+    'application_semester' => 'Fall 2016',
+
 ];
